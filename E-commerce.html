@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>E-commerce Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        background-color: #f4f4f4;
+        background-image: url('https://www.transparenttextures.com/patterns/coarse-grain.png');
+        background-repeat: repeat;
+        background-color: #2874f0; /* Flipkart blue */
+        color: white;
+    }
+    header {
+        background-color: #003380;
+        color: white;
+        padding: 1rem 2rem;
+        text-align: center;
+    }
+        header h1 {
+            margin: 0;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 2rem;
+            gap: 2rem;
+        }
+        .product {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 250px;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .product h2 {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+        .product p {
+            color: #555;
+            font-size: 1rem;
+        }
+        .product .price {
+            font-weight: bold;
+            margin: 0.5rem 0;
+            color: #e91e63;
+        }
+        .product button {
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .product button:hover {
+            background-color: #c2185b;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 2rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header style="display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; background-color: #003380; color: white;">
+        <h1 style="margin: 0;">Flipcart</h1>
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <input type="search" placeholder="Search products..." style="padding: 0.5rem; border-radius: 3px; border: none; width: 200px;" />
+            <button id="wishlist-btn" style="background-color: #e91e63; color: white; border: none; padding: 0.5rem 1rem; border-radius: 3px; cursor: pointer;">Wishlist</button>
+            <button id="orders-btn" style="background-color: #e91e63; color: white; border: none; padding: 0.5rem 1rem; border-radius: 3px; cursor: pointer;">Orders</button>
+        </div>
+    </header>
+    <section id="wishlist-section" style="display:none; background: white; color: black; padding: 1rem; max-width: 600px; margin: 1rem auto; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h2>Wishlist</h2>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=100&q=80" alt="Graphic T-Shirt" style="border-radius: 5px;"/>
+            <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=100&q=80" alt="Striped T-Shirt" style="border-radius: 5px;"/>
+            <img src="https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=100&q=80" alt="Men's Jacket" style="border-radius: 5px;"/>
+        </div>
+    </section>
+    <section id="orders-section" style="display:none; background: white; color: black; padding: 1rem; max-width: 600px; margin: 1rem auto; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h2>Orders</h2>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+            <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=100&q=80" alt="Blue Jeans" style="border-radius: 5px;"/>
+            <img src="https://images.unsplash.com/photo-1520975695913-0a7a3a1a7a1a?auto=format&fit=crop&w=100&q=80" alt="Casual Hoodie" style="border-radius: 5px;"/>
+        </div>
+    </section>
+    <main>
+        <section class="products">
+            <article class="product">
+                <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=250&q=80" alt="T-Shirt 1" />
+                <h2>Graphic T-Shirt</h2>
+                <p>Comfortable cotton t-shirt with cool graphic design.</p>
+                <div class="price">$199.99</div>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-wishlist">Add to Wishlist</button>
+            </article>
+            <article class="product">
+                <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=250&q=80" alt="T-Shirt 2" />
+                <h2>Plain White T-Shirt</h2>
+                <p>Classic plain white t-shirt for everyday wear.</p>
+                <div class="price">$149.99</div>
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="add-to-wishlist">Add to Wishlist</button>
+            </article>
+            <article class="product">
+                <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=250&q=80" alt="T-Shirt 3" />
+                <h2>Striped T-Shirt</h2>
+                <p>Stylish striped t-shirt with soft fabric.</p>
+                <div class="price">$179.99</div>
+                <button>Add to Cart</button>
+            </article>
+            <article class="product">
+                <img src="https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=250&q=80" alt="Jacket" />
+                <h2>Men's Jacket</h2>
+                <p>Warm and stylish men's jacket for winter.</p>
+                <div class="price">$249.99</div>
+                <button>Add to Cart</button>
+            </article>
+            <article class="product">
+                <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=250&q=80" alt="Jeans" />
+                <h2>Blue Jeans</h2>
+                <p>Comfortable blue jeans with a modern fit.</p>
+                <div class="price">$129.99</div>
+                <button>Add to Cart</button>
+            </article>
+            <article class="product">
+                <img src="https://images.unsplash.com/photo-1520975695913-0a7a3a1a7a1a?auto=format&fit=crop&w=250&q=80" alt="Hoodie" />
+                <h2>Casual Hoodie</h2>
+                <p>Soft and cozy hoodie for everyday wear.</p>
+                <div class="price">$159.99</div>
+                <button>Add to Cart</button>
+            </article>
+        </section>
+    </main>
+    <button onclick="window.location.href='footwear.html'" style="display: block; margin: 1rem auto; background-color: #2874f0; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 5px; font-size: 1.1rem; cursor: pointer;">Next</button>
+    <section class="payment-options" style="max-width: 400px; margin: 2rem auto; background: white; padding: 1rem; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); color: black;">
+        <h2 style="text-align: center; color: #2874f0;">Order Now</h2>
+        <button id="order-now-btn" style="background-color: #2874f0; color: white; border: none; padding: 0.5rem; border-radius: 3px; cursor: pointer; font-size: 1rem; width: 100%;">Order Now</button>
+        <div id="payment-options" style="display: none; margin-top: 1rem; text-align: center;">
+            <button style="background-color: #00bfa5; color: white; border: none; padding: 0.5rem 1rem; margin: 0 0.5rem; border-radius: 3px; cursor: pointer;">PhonePe</button>
+            <button style="background-color: #4285F4; color: white; border: none; padding: 0.5rem 1rem; margin: 0 0.5rem; border-radius: 3px; cursor: pointer;">Google Pay</button>
+            <button style="background-color: #4CAF50; color: white; border: none; padding: 0.5rem 1rem; margin: 0 0.5rem; border-radius: 3px; cursor: pointer;">Cash</button>
+            <button style="background-color: #003087; color: white; border: none; padding: 0.5rem 1rem; margin: 0 0.5rem; border-radius: 3px; cursor: pointer;">Bank Transfer</button>
+        </div>
+    </section>
+    <script>
+        document.getElementById('order-now-btn').addEventListener('click', () => {
+            const paymentOptions = document.getElementById('payment-options');
+            if (paymentOptions.style.display === 'none' || paymentOptions.style.display === '') {
+                paymentOptions.style.display = 'block';
+                paymentOptions.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                paymentOptions.style.display = 'none';
+            }
+        });
+    </script>
+    <script>
+        document.getElementById('wishlist-btn').addEventListener('click', () => {
+            const wishlistSection = document.getElementById('wishlist-section');
+            const ordersSection = document.getElementById('orders-section');
+            if (wishlistSection.style.display === 'none' || wishlistSection.style.display === '') {
+                wishlistSection.style.display = 'block';
+                ordersSection.style.display = 'none';
+                wishlistSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                wishlistSection.style.display = 'none';
+            }
+        });
+        document.getElementById('orders-btn').addEventListener('click', () => {
+            const ordersSection = document.getElementById('orders-section');
+            const wishlistSection = document.getElementById('wishlist-section');
+            if (ordersSection.style.display === 'none' || ordersSection.style.display === '') {
+                ordersSection.style.display = 'block';
+                wishlistSection.style.display = 'none';
+                ordersSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                ordersSection.style.display = 'none';
+            }
+        });
+    </script>
+    <footer>
+        &copy; 2024 E-commerce Store. All rights reserved.
+    </footer>
+</body>
+</html>
